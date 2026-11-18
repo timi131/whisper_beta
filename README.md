@@ -94,3 +94,31 @@ python -m uvicorn app:app --host 0.0.0.0 --port $PORT
 - `transcript.txt` — расшифровка с временными метками
 
 Список записей и кнопка удаления доступны на главной странице.
+
+## macOS-инсталлятор
+
+Для установки через Finder соберите приложение и образ:
+
+```bash
+chmod +x scripts/build-macos-app.sh scripts/install-macos.sh scripts/stop-macos.sh
+./scripts/build-macos-app.sh
+```
+
+Будут созданы:
+
+- `dist/Whisper Beta.app` — приложение macOS
+- `dist/Whisper-Beta-macOS.dmg` — образ для перетаскивания в `Applications`
+
+Для автоматической установки в `~/Applications`:
+
+```bash
+./scripts/install-macos.sh
+```
+
+При первом запуске приложение создаст окружение в `~/Library/Application Support/WhisperBeta`, установит зависимости и откроет страницу по адресу http://127.0.0.1:8000.
+
+Сервер останавливается командой:
+
+```bash
+./scripts/stop-macos.sh
+```
